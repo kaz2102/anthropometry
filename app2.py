@@ -20,10 +20,10 @@ def calcutaion():
 
     
 
-    agedata = openpyxl.load_workbook("static\\circum.xlsx")
+    agedata = openpyxl.load_workbook("\circum.xlsx")
     age_data = agedata['Sheet1']
 
-    wtdata = openpyxl.load_workbook("static\\std_dev.xlsx")
+    wtdata = openpyxl.load_workbook("\std_dev.xlsx")
     wt_data = wtdata['Sheet1']
     
         
