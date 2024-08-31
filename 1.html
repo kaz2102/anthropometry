@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>Anthropometry</title>
+</head>
+<body>
+	<p> 
+	   <h3>calculating anthropometry ratios<h3> </p>
+	<form action ="/submit" method = "POST">
+		<label> Gender : </label><br>
+		<input type= "radio" id = "male" name = "gender" value="m"> 
+		<label  for = "male" >Male</label><br>
+		<input type= "radio" id = "female" name = "gender" value="f"> 
+		<label  for = "female">Female</label>
+		<br><br>
+		<label for ="age"> Enter age : (months mentioned as decimals until 1 year of age)</label>
+		<select id = "age" name= "age" width="4">
+			<option value="0.1"> 0.1 </option>
+			<option value="0.3"> 0.3 </option>
+			<option value="0.6"> 0.6 </option>
+			<option value="0.9"> 0.9 </option>
+			<option value="1">   1   </option>
+			<option value="1.5"> 1.5 </option>
+			<option value="2">   2   </option>
+			<option value="2.5"> 2.5 </option>
+			<option value="3">   3   </option>
+			<option value="3.5"> 3.5 </option>
+			<option value="4">   4   </option>
+			<option value="4.5"> 4.5 </option>
+			<option value="5">   5   </option>
+			<option value="6">   6   </option>
+			<option value="7">   7   </option>
+			<option value="8">   8   </option>
+			<option value="9">   9   </option>
+			<option value="10">  10  </option>
+			<option value="11">  11  </option>
+			<option value="12">  12  </option>
+			<option value="13">  13  </option>
+			<option value="14">  14  </option>
+			<option value="15">  15  </option>
+			<option value="13">  16  </option>
+			<option value="14">  17  </option>
+			<option value="15">  18  </option>
+		</select>
+		<br><br>
+		<label for= "height"> Height: </label>
+		<input type="number" id ="height" name = "height" step="0.01">
+		<br><br>
+		<label for= "weight">weight: </label>
+		<input type="number" id ="weight" name = "weight" step="0.01">	
+		<br><br>
+		<button type="submit" > Calculate </button>
+		
+	</form>
+
+
+
+
+</body>
+</html>
