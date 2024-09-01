@@ -18,12 +18,14 @@ def calcutaion():
     gender = request.form['gender']
     age  = float(request.form['age'])
 
+    HC_range = None
+
     
 
-    agedata = openpyxl.load_workbook("\circum.xlsx")
+    agedata = openpyxl.load_workbook("static//circum.xlsx")
     age_data = agedata['Sheet1']
 
-    wtdata = openpyxl.load_workbook("\std_dev.xlsx")
+    wtdata = openpyxl.load_workbook("static//std_dev.xlsx")
     wt_data = wtdata['Sheet1']
     
         
@@ -38,8 +40,8 @@ def calcutaion():
             height_range = [age_data.cell(row-1,3).value , age_data.cell(row,3).value ,age_data.cell(row+1,3).value ]
             ht_ratio= round(height/ float(age_data.cell(row,3).value) , 2)
 
-            if age < 4 :
-                HC_range = [ age_data.cell(row-1,4).value, age_data.cell(row,4).value,age_data.cell(row+1,4).value ]
+            
+            HC_range = [ age_data.cell(row-1,4).value, age_data.cell(row,4).value,age_data.cell(row+1,4).value ]
         
         if age_data.cell(row,1).value == age  and gender == "f":
             weight_range =[ age_data.cell(row-1,5).value, age_data.cell(row,5).value,age_data.cell(row+1,5).value ] 
@@ -50,20 +52,29 @@ def calcutaion():
             ht_ratio= round(height/ float(age_data.cell(row,6).value) , 2)
             
             #HC 
-            if age < 4 :
-                HC_range = [age_data.cell(row-1,7).value, age_data.cell(row,7).value,age_data.cell(row+1,7).value ]
-
-    adj_ht = int(round(height))
-    for row2 in range(2,78) :
-        
-        if adj_ht == wt_data.cell(row2,6).value and gender == "m":
-            wfh = round(weight / wt_data.cell(row2 , 5).value,2)
             
-        if adj_ht == wt_data.cell(row2,6).value and gender == "f":
-            wfh = round(weight / wt_data.cell(row2 , 7).value,2)
-          
+            HC_range = [age_data.cell(row-1,7).value, age_data.cell(row,7).value,age_data.cell(row+1,7).value ]
 
-    return render_template("result.html", weight_range = weight_range ,wt_ratio = wt_ratio , height_range = height_range, ht_ratio=ht_ratio, HC_range =HC_range, wfh = wfh )
+
+    wfh = None
+    if age <= 4 :
+        adj_ht = int(round(height))
+        for row2 in range(2,78) :
+            
+            if adj_ht == wt_data.cell(row2,6).value and gender == "m":
+                wfh = round(weight / wt_data.cell(row2 , 5).value,2)
+                
+            if adj_ht == wt_data.cell(row2,6).value and gender == "f":
+                wfh = round(weight / wt_data.cell(row2 , 7).value,2)
+
+
+    bmi = None
+    if age > 4 :
+        h_m = ( height /100) **2
+        bmi = round(weight /h_m , 2)
+            
+
+    return render_template("result.html", weight_range = weight_range ,wt_ratio = wt_ratio , height_range = height_range, ht_ratio=ht_ratio, HC_range =HC_range, wfh = wfh ,bmi = bmi)
 
 
 
@@ -80,4 +91,4 @@ def calcutaion():
 
 
 if __name__ == '__main__' :
-    app.run(debug=True)
+    app.run(host ="0.0.0.0", debug=True)

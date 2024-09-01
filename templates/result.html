@@ -1,0 +1,22 @@
+<html>
+
+<head>
+  <title> results </title>
+</head>
+
+<h3> anthropometry range and ratios : </h3>
+
+<body>
+  <p> 
+    the weight range is {{weight_range}} </br>
+    Weight for Age  : {{wt_ratio}} </br><br>
+    the height range is {{height_range}}<br>
+    Height for Age  : {{ht_ratio}} <br><br>
+    Head Circumference range : {{HC_range}} <br><br>
+    {% if wfh %} Weight for Height : {{wfh}}<br><br> {% endif %}
+    {% if bmi %} BMI : {{bmi}} <br> {% endif %} 
+  
+  </p>
+</body>
+
+</html>

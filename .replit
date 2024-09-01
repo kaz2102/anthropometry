@@ -1,0 +1,12 @@
+modules = ["python-3.12", "web"]
+run = "python app2.py"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "python app2.py"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
