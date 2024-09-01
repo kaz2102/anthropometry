@@ -25,7 +25,7 @@ def calcutaion():
     agedata = openpyxl.load_workbook("static//circum.xlsx")
     age_data = agedata['Sheet1']
 
-    wtdata = openpyxl.load_workbook("static//std_deviation.xlsx")
+    wtdata = openpyxl.load_workbook("static//standard_d.xlsx")
     wt_data = wtdata['Sheet1']
     
         
