@@ -89,7 +89,7 @@ def calcutaion():
 
     
 
-    return render_template("result.html",z_score=z_score weight_range = weight_range ,wt_ratio = wt_ratio , height_range = height_range, ht_ratio=ht_ratio, HC_range =HC_range, wfh = wfh ,bmi = bmi)
+    return render_template("result.html",z_score=z_score ,weight_range = weight_range ,wt_ratio = wt_ratio , height_range = height_range, ht_ratio=ht_ratio, HC_range =HC_range, wfh = wfh ,bmi = bmi)
 
 
 
