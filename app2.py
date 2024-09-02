@@ -57,24 +57,39 @@ def calcutaion():
 
 
     wfh = None
+    z_score = None
     if age <= 4 :
         adj_ht = int(round(height))
         for row2 in range(2,78) :
             
             if adj_ht == wt_data.cell(row2,6).value and gender == "m":
                 wfh = round(weight / wt_data.cell(row2 , 5).value,2)
+                if weight >= wt_data.cell(row2,5).value : z_score = "median"
+                elif weight >= wt_data.cell(row2,4).value : z_score = "-1SD to median "
+                elif weight >= wt_data.cell(row2,3).value : z_score = "-2 to -1 SD"
+                elif weight >= wt_data.cell(row2,2).value : z_score = "-3 to -2 SD"
+                elif weight >= wt_data.cell(row2,1).value : z_score = "-4 to -3 SD"
+                else : z_score = "less than -4SD "
                 
             if adj_ht == wt_data.cell(row2,6).value and gender == "f":
                 wfh = round(weight / wt_data.cell(row2 , 7).value,2)
+                if weight >= wt_data.cell(row2,7).value : z_score = "median"
+                elif weight >= wt_data.cell(row2,8).value : z_score = "-1SD to median "
+                elif weight >= wt_data.cell(row2,9).value : z_score = "-2 to -1 SD"
+                elif weight >= wt_data.cell(row2,10).value : z_score = "-3 to -2 SD"
+                elif weight >= wt_data.cell(row2,11).value : z_score = "-4 to -3 SD"
+                else : z_score = "less than -4SD "
 
 
     bmi = None
     if age > 4 :
         h_m = ( height /100) **2
         bmi = round(weight /h_m , 2)
-            
 
-    return render_template("result.html", weight_range = weight_range ,wt_ratio = wt_ratio , height_range = height_range, ht_ratio=ht_ratio, HC_range =HC_range, wfh = wfh ,bmi = bmi)
+
+    
+
+    return render_template("result.html",z_score=z_score weight_range = weight_range ,wt_ratio = wt_ratio , height_range = height_range, ht_ratio=ht_ratio, HC_range =HC_range, wfh = wfh ,bmi = bmi)
 
 
 
